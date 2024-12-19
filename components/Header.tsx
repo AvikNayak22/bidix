@@ -16,12 +16,21 @@ const Header = async () => {
             <Image src="file.svg" alt="logo" width={50} height={50} />
             Bidix
           </Link>
-          <div>
+          <div className="flex items-center gap-8">
+            <Link href="/" className="hover:underline flex items-center gap-1">
+              All auctions
+            </Link>
             <Link
               href="/bid/create"
               className="hover:underline flex items-center gap-1"
             >
-              Auction an Item
+              Create Auction
+            </Link>
+            <Link
+              href="/auctions"
+              className="hover:underline flex items-center gap-1"
+            >
+              My auctions
             </Link>
           </div>
         </div>

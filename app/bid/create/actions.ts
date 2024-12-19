@@ -4,18 +4,13 @@ import { database } from "@/db/database";
 import { auth } from "@/auth";
 import { items } from "@/db/schema";
 import { redirect } from "next/navigation";
-import { getSignedUrlForS3Object } from "@/lib/s3";
-
-export async function createUploadUrlAction(key: string, type: string) {
-  return await getSignedUrlForS3Object(key, type);
-}
 
 export async function createItemAction({
-  fileName,
+  fileKey,
   name,
   startingPrice,
 }: {
-  fileName: string;
+  fileKey: string;
   name: string;
   startingPrice: number;
 }) {
@@ -32,7 +27,7 @@ export async function createItemAction({
   await database.insert(items).values({
     name,
     startingPrice,
-    fileKey: fileName,
+    fileKey,
     userId: user.id as string,
   });
 

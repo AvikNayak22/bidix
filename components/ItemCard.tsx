@@ -1,7 +1,9 @@
 import { Item } from "@/db/schema";
-import { getImageUrl } from "@/util/files";
+import { getImageUrl } from "@/utils/files";
 import Image from "next/image";
 import React from "react";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 const ItemCard = ({ item }: { item: Item }) => {
   return (
@@ -14,8 +16,11 @@ const ItemCard = ({ item }: { item: Item }) => {
       />
       <h2 className="text-xl font-bold ">{item.name}</h2>
       <p className="text-lg ">startingPrice: {item.startingPrice / 100}</p>
+
+      <Button asChild>
+        <Link href={`/bid/${item.id}`}>Place Bid</Link>
+      </Button>
     </div>
   );
 };
-
 export default ItemCard;
